@@ -12,7 +12,7 @@ public class ErrorController {
     ResponseEntity<String> handleUnauthorizedException(UnauthorizedException e){
         return ResponseEntity
                 .status(HttpStatus.UNAUTHORIZED)
-                .body("Unauthorized");
+                .body(e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
