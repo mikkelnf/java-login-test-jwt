@@ -24,11 +24,11 @@ public class LoginController {
         throw new UnauthorizedException();
     }
 
-//    @PostMapping
-//    @RequestMapping(UrlMappings.AUTH_URL)
-//    public ResponseEntity validateToken(@RequestParam String x){
-//        jwtUtil.validateToken(x);
-//        return ResponseEntity.ok().body(jwtUtil.generateToken("hehe"));
-//
-//    }
+    @GetMapping(params = {"token"})
+    public String validateToken(@RequestParam String token){
+        if(jwtUtil.validateToken(token)){
+            return token;
+        }
+        throw new UnauthorizedException();
+    }
 }
